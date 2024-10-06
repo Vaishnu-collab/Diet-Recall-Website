@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Recommendations 🍽️</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Meal Recommendations 🍽️</h1>
+    </header>
+
+    <section id="meal-recommendations">
+        <label for="dietary-preference">Select Dietary Preference:</label>
+        <select id="dietary-preference">
+            <option value="vegetarian">Vegetarian</option>
+            <option value="vegan">Vegan</option>
+            <option value="nonVegetarian">Non-Vegetarian</option>
+        </select>
+
+        <button onclick="recommendMeals()">Get Recommendations</button>
+
+        <h3>Recommended Meals:</h3>
+        <ul id="meal-list">
+            <!-- Recommended meals will appear here -->
+        </ul>
+    </section>
+
+    <footer>
+        <p>© 2024 Diet Recall App. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Object to store meal recommendations based on dietary preferences
+const mealRecommendations = {
+  vegetarian: [
+      "🍃 Palak Paneer - 240 calories",
+      "🥫 Chana Masala - 350 calories",
+      "🍚 Vegetable Biryani - 320 calories",
+      "🥔 Aloo Gobi - 200 calories",
+      "🥣 Masoor Dal - 180 calories",
+      "🍋 Lemon Rice - 210 calories"
+  ],
+  vegan: [
+      "🥦 Vegan Tikka Masala - 290 calories",
+      "🍅 Tomato Basil Soup - 150 calories",
+      "🥗 Quinoa Salad - 300 calories",
+      "🍠 Roasted Sweet Potatoes - 220 calories",
+      "🥑 Avocado Toast - 250 calories",
+      "🍆 Eggplant Curry - 240 calories"
+  ],
+  nonVegetarian: [
+      "🍗 Butter Chicken - 490 calories",
+      "🍤 Prawn Curry - 400 calories",
+      "🍖 Chicken Tikka Masala - 460 calories",
+      "🥩 Grilled Steak - 500 calories",
+      "🍳 Scrambled Eggs with Bacon - 340 calories",
+      "🍗 Roasted Chicken with Vegetables - 450 calories"
+  ]
+};
+
+// Function to display meal recommendations based on the selected dietary preference
+function recommendMeals() {
+  // Get the selected dietary preference
+  const selectedPreference = document.getElementById('dietary-preference').value;
+
+  // Get the meal list container
+  const mealList = document.getElementById('meal-list');
+
+  // Clear previous recommendations
+  mealList.innerHTML = '';
+
+  // Check if the dietary preference exists in the mealRecommendations object
+  if (mealRecommendations[selectedPreference]) {
+      // Loop through the recommended meals for the selected preference and display them
+      mealRecommendations[selectedPreference].forEach(meal => {
+          const li = document.createElement('li');
+          li.textContent = meal;
+          mealList.appendChild(li);
+      });
+  } else {
+      mealList.innerHTML = '<li>No meal recommendations available for the selected preference.</li>';
+  }
+}
+
+    </script>
+    
+</body>
+</html>
+
+  

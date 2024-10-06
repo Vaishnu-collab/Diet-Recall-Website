@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Scanning 📷</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Meal Scanning 📷</h1>
+    </header>
+
+    <section id="meal-scanning">
+        <button id="start-scanning">Start Scanning</button>
+        <div id="scanner" style="display: none; position: relative;">
+            <div id="interactive" style="width: 100%; height: 300px;"></div>
+            <button id="stop-scanning" style="display: none;">Stop Scanning</button>
+        </div>
+        <p id="scanned-meal-output"></p>
+    </section>
+
+    <footer>
+        <p>© 2024 Diet Recall App. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Script for meal scanning functionality
+let scanningActive = false;
+
+// Function to start scanning
+function startScanning() {
+    scanningActive = true;
+    document.getElementById('scanner').style.display = 'block';
+    document.getElementById('start-scanning').style.display = 'none';
+    document.getElementById('stop-scanning').style.display = 'block';
+
+    // Simulate scanning process
+    simulateScan();
+}
+
+// Function to stop scanning
+function stopScanning() {
+    scanningActive = false;
+    document.getElementById('scanner').style.display = 'none';
+    document.getElementById('start-scanning').style.display = 'block';
+    document.getElementById('stop-scanning').style.display = 'none';
+}
+
+// Function to simulate scanning and provide a scanned meal output
+function simulateScan() {
+    if (scanningActive) {
+        // This simulates a scanning result; in a real app, you'd get this from a scanner
+        const scannedMeal = prompt("Scan your meal (e.g., sheera, palak paneer):");
+        const calories = getCalories(scannedMeal.toLowerCase());
+
+        // Display the scanned meal and its calories
+        const output = calories
+            ? `You scanned: ${scannedMeal}. It contains approximately ${calories} calories.`
+            : `Meal not found in the database. Please try another.`;
+        
+        document.getElementById('scanned-meal-output').innerText = output;
+
+        // Stop scanning after the simulation
+        stopScanning();
+    }
+}
+
+// Function to get calories based on scanned meal name
+function getCalories(meal) {
+    const mealCalories = {
+        "sheera": 635,
+        "palak paneer": 360,
+        "butter chicken": 450,
+        "chana masala": 350,
+        "vegetable biryani": 320,
+        "aloo gobi": 150,
+        "vegan tikka masala": 300,
+        "chicken tikka masala": 400,
+        "prawn curry": 500,
+        "masoor dal": 230,
+        "lemon rice": 250
+    };
+
+    return mealCalories[meal] || null; // Returns calories or null if not found
+}
+
+// Event listeners for start and stop buttons
+document.getElementById('start-scanning').addEventListener('click', startScanning);
+document.getElementById('stop-scanning').addEventListener('click', stopScanning);
+
+    </script>
+</body>
+</html>

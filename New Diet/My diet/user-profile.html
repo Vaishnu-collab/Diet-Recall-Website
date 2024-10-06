@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile 👤</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>User Profile 👤</h1>
+    </header>
+    <section id="user-profile">
+        <form id="profile-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" placeholder="Enter your age" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" required>
+                <option value="" disabled selected>Select your gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="dietary-preferences">Dietary Preferences:</label>
+            <select id="dietary-preferences" required>
+                <option value="" disabled selected>Select your dietary preference</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="non-vegetarian">Non-Vegetarian</option>
+                <option value="keto">Keto</option>
+                <option value="paleo">Paleo</option>
+            </select>
+
+            <label for="fitness-goal">Fitness Goal:</label>
+            <input type="text" id="fitness-goal" placeholder="e.g., Lose weight, Gain muscle" required>
+
+            <button type="submit">Save Profile ✅</button>
+        </form>
+        <p id="profile-output"></p>
+    </section>
+    <footer>
+        <p>© 2024 Diet Recall App. All rights reserved.</p>
+    </footer>
+</body>
+</html>

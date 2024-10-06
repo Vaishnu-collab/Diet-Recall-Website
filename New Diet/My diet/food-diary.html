@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Diary 📔</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Food Diary 📔</h1>
+    </header>
+
+    <section id="food-diary">
+        <div id="add-entry">
+            <label for="meal-type">Meal Type:</label>
+            <select id="meal-type">
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="snack">Snack</option>
+            </select>
+
+            <label for="meal-name">Meal Name:</label>
+            <input type="text" id="meal-name" placeholder="Enter meal name">
+
+            <label for="serving-size">Serving Size:</label>
+            <input type="text" id="serving-size" placeholder="e.g., 1 cup">
+
+            <button onclick="addFoodEntry()">Add Entry ➕</button>
+        </div>
+
+        <h3>Daily Log 📅</h3>
+        <ul id="food-log"></ul>
+
+        <h3>Nutrition Summary 📊</h3>
+        <div id="nutrition-summary">
+            <canvas id="nutritionChart" width="100" height="100" style="display: block; box-sizing: border-box;"></canvas>
+        </div>
+        
+    </section>
+
+    <footer>
+        <p>© 2024 Diet Recall App. All rights reserved.</p>
+    </footer>
+
+    <script src="chart.js"></script> <!-- Include the chart.js file first -->
+    <script src="script.js"></script> <!-- Then include the script.js file -->
+</body>
+</html>

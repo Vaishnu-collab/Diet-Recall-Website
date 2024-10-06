@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allergy Tracker 🚫</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Allergy Tracker 🚫</h1>
+    </header>
+
+    <section id="allergy-tracker">
+        <label for="meal-input">Enter Meal Name:</label>
+        <input type="text" id="meal-input" placeholder="Enter meal name">
+        
+        <label for="allergy-input">Enter Allergy:</label>
+        <input type="text" id="allergy-input" placeholder="Enter allergy (e.g., nuts)">
+        
+        <button onclick="checkAllergy()">Check Allergy</button>
+        
+        <p id="allergy-output"></p>
+    </section>
+
+    <footer>
+        <p>© 2024 Diet Recall App. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Object to store meals and their associated allergens
+const mealAllergens = {
+  "sheera": ["milk", "mawa"],
+  "palak paneer": ["palak"],
+  "butter chicken": ["butter"],
+  "chana masala": [],
+  "vegetable biryani": ["nuts"],
+  "aloo gobi": [],
+  "vegan tikka masala": ["soy"],
+  "chicken tikka masala": ["milk"],
+  "prawn curry": ["shellfish"],
+  "masoor dal": [],
+  "lemon rice": ["lemon"]
+};
+
+// Function to check for allergens in the input meal
+function checkAllergy() {
+  // Get the entered meal and allergen from input fields
+  const mealInput = document.getElementById('meal-input').value.toLowerCase();
+  const allergyInput = document.getElementById('allergy-input').value.toLowerCase();
+
+  // Check if the meal exists in the mealAllergens object
+  if (mealAllergens[mealInput]) {
+      // Get the allergens associated with the meal
+      const mealAllergenList = mealAllergens[mealInput];
+
+      // Check if the meal contains the allergen entered by the user
+      if (mealAllergenList.includes(allergyInput)) {
+          document.getElementById('allergy-output').innerText = `⚠️ Alert! The meal "${mealInput}" contains ${allergyInput}.`;
+      } else {
+          document.getElementById('allergy-output').innerText = `✅ The meal "${mealInput}" does not contain ${allergyInput}.`;
+      }
+  } else {
+      // If the meal is not in the list, show an error message
+      document.getElementById('allergy-output').innerText = `❌ Meal not found in the database. Please enter a valid meal.`;
+  }
+}
+
+    </script>
+</body>
+</html>
